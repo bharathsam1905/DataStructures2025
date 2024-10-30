@@ -18,9 +18,11 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
-set_texts = set([texts[0][0],texts[0][1]])
-set_calls = set([calls[0][0],calls[0][1]])
+distinct_numbers=set()
+#print('texts',texts)
+for i in range(len(texts[0])):
+    distinct_numbers.update([texts[i][0],texts[i][1]])
+for j in range(len(calls[0])):   
+    distinct_numbers.update([calls[j][0],calls[j][1]])
 
-print('texts',texts[0])
-print('calls',calls[0])
-print('distinct numbers',set_texts|set_calls)
+print('distinct numbers',distinct_numbers)
