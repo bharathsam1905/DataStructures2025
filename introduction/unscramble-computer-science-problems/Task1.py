@@ -19,10 +19,9 @@ Print a message:
 "There are <count> different telephone numbers in the records."
 """
 distinct_numbers=set()
-#print('texts',texts)
-for i in range(len(texts[0])):
+for i in range(len(texts)):
     distinct_numbers.update([texts[i][0],texts[i][1]])
-for j in range(len(calls[0])):   
+for j in range(len(calls)):   
     distinct_numbers.update([calls[j][0],calls[j][1]])
 
-print('distinct numbers',distinct_numbers)
+print('There are',len(distinct_numbers),'different telephone numbers in the records.')
