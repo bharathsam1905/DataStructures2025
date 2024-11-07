@@ -27,9 +27,19 @@ for i in range(len(calls)):
     enddate=datetime(2016,9,30).date()
     inputdate=datetime.strptime(calls[i][2],"%d-%m-%Y %H:%M:%S").date()
     if(inputdate>=startdate and inputdate<=enddate):  
-     key=calls[i][0]
-     value=calls[i][3]    
-     call_dict[key]=int(value)
+     caller=calls[i][0]
+     receiver=calls[i][1]
+     duration=int(calls[i][3])
+     if caller in call_dict:
+         call_dict[caller]+=duration
+     else:
+        call_dict[caller]=duration
+     if receiver in call_dict:
+         call_dict[receiver]+=duration
+     else:
+        call_dict[receiver]=duration
+         
+     
 max_key, max_value = max(call_dict.items(), key=lambda x: x[1])
 print('Telephone Number',max_key,'spent the longest time,',max_value,'seconds, on the phone during \
 September 2016.')
