@@ -37,9 +37,7 @@ for i in range(len(calls)):
      if receiver in call_dict:
          call_dict[receiver]+=duration
      else:
-        call_dict[receiver]=duration
-         
-     
+        call_dict[receiver]=duration    
 max_key, max_value = max(call_dict.items(), key=lambda x: x[1])
 print('Telephone Number',max_key,'spent the longest time,',max_value,'seconds, on the phone during \
 September 2016.')
