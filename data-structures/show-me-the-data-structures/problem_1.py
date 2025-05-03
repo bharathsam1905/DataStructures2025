@@ -22,7 +22,8 @@ class LRU_Cache:
         capacity : int
             The maximum number of items the cache can hold.
         """
-        pass
+        self.capacity=capacity
+        self.cache=OrderedDict()
 
     def get(self, key: int) -> Optional[Any]:
         """
@@ -38,7 +39,12 @@ class LRU_Cache:
         Optional[Any]
             The value associated with the key if it exists, otherwise -1.
         """
-        pass
+        if key not in self.cache:
+            return -1
+        else:
+            value=self.cache.pop(key)
+            self.cache[key]=value
+            return value
 
     def set(self, key: int, value: Any) -> None:
         """
@@ -53,7 +59,14 @@ class LRU_Cache:
         value : Any
             The value to be associated with the key.
         """
-        pass
+        if key not in self.cache and len(self.cache)<self.capacity:
+            self.cache.append(key)
+        if len(self.cache)>=self.capacity and  key not in self.cache:
+            self.cache[self.capacity].pop()
+            self.cache.append(key)
+        
+        
+            
 
 
 if __name__ == '__main__':
