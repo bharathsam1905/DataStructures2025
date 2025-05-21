@@ -59,11 +59,12 @@ class LRU_Cache:
         value : Any
             The value to be associated with the key.
         """
-        if key not in self.cache and len(self.cache)<self.capacity:
-            self.cache.append(key)
-        if len(self.cache)>=self.capacity and  key not in self.cache:
-            self.cache[self.capacity].pop()
-            self.cache.append(key)
+        if key in self.cache:
+            self.cache.pop(key)
+        elif len(self.cache)>=self.capacity:
+            self.cache.popitem(last=False)
+        self.cache[key]=value
+            
         
         
             
@@ -87,7 +88,9 @@ if __name__ == '__main__':
     assert our_cache.get(3) == -1  # Returns -1, 3 was evicted
 
     # Test Case 2
-    pass
-
+    our_cache.set(7,None)  #Null Case
+    assert our_cache.get(7) is None
     # Test Case 3
-    pass
+    large_value="x"*1000000
+    our_cache.set(8,large_value)
+    assert our_cache.get(8)==large_value
