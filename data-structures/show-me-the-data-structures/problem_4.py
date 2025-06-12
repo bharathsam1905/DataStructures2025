@@ -133,7 +133,16 @@ if __name__ == "__main__":
     print(is_user_in_group("sub_child_user", parent))  # Expected output: True
 
     # Test Case 2
-    pass
+    print("Test Case 2:negative test")
+    print(is_user_in_group("test_user", parent))
+     
 
     # Test Case 3
-    pass
+    print("Test Case 3:user in child")
+    child.add_user("child_user")
+    print(is_user_in_group("child_user", parent))
+    
+      # Test Case 4
+    print("Test Case 4:user in parent")
+    parent.add_user("parent_user")
+    print(is_user_in_group("parent_user", parent))

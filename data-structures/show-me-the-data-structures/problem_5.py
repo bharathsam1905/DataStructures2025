@@ -79,14 +79,18 @@ class Blockchain:
         """
         Constructs all the necessary attributes for the Blockchain object.
         """
-        pass
+        self.chain=[self.create_genesis_block()]
 
-    def create_genesis_block(self) -> None:
+    def create_genesis_block(self) -> Block:
         """
         Create the genesis block (the first block in the blockchain).
         """
         # Genesis block has no previous hash and empty data
-        pass
+        import datetime
+        return Block(timestamp= datetime.datetime.now(datetime.timezone.utc)
+,
+                     data="Genesis Block",
+                     previous_hash="0")
 
     def add_block(self, data: str) -> None:
         """
@@ -97,7 +101,13 @@ class Blockchain:
         data : str
             The data to be stored in the new block.
         """
-        pass
+        last_block=self.chain[-1]
+        new_block=Block(
+            timestamp= datetime.datetime.now(datetime.timezone.utc)	,
+            data=data,
+            previous_hash=last_block.hash
+        )
+        self.chain.append(new_block)
 
     def __repr__(self) -> str:
         """
@@ -124,7 +134,12 @@ if __name__ == "__main__":
     print(blockchain)
 
     # Test Case 2
-    pass
+    print("Test Case 2: Empty String Test")
+    blockchain.add_block("")
+    print(blockchain.chain[-1])
 
     # Test Case 3
-    pass
+    print("Test Case 3: Add a largedata set, shouldn't crash")
+    largedata="X"*1000000
+    blockchain.add_block(largedata)
+    print(blockchain.chain[-1].hash)
