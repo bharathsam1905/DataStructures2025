@@ -54,12 +54,7 @@ class LinkedList:
             length+=1
             current_node=current_node.next_element
         return length
-
-
-        
-
-
-    
+      
     def print_linkedlist(self):
         current = self.head_node
         if current is None:
