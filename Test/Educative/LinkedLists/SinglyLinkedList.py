@@ -75,14 +75,6 @@ class LinkedList:
 
 
 
-obj1=LinkedList()
-obj1.insert_at_head(10)
-obj1.insert_at_head(20)
-obj1.insert_at_tail(30)
-obj1.print_linkedlist()
-print(obj1.search(40))
-obj1.delete(20)
-obj1.print_linkedlist()
-print(obj1.length_of_linkedlist())
+
     
 

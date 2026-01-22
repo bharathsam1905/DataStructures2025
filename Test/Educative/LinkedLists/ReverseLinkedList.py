@@ -1,17 +1,27 @@
 from SinglyLinkedList import LinkedList
 
-def reverse_linked_list(self,linkedlist1):
-    while linkedlist1 is not None:
-        if linkedlist1.next_element==None:
-            self.head=linkedlist1
-    reverse_node=self.head
-    while linkedlist1 is not None:
-        if reverse_node.data==linkedlist1.next_element.data:
-            reverse_node.next_element=linkedlist1
-            reverse_node.next_element=reverse_node.next_element.next_element
+def reverse_linked_list(head):
+    prev=None
+    curr=head
+    while curr:
+        nxt=curr.next_element
+        curr.next_element=prev
+        prev=curr
+        curr=nxt
+    return prev
 
-        linkedlist1=linkedlist1.next_element
-    
-    return reverse_node
+obj1=LinkedList()
+obj1.insert_at_head(10)
+obj1.insert_at_head(20)
+obj1.insert_at_tail(30)
+obj1.print_linkedlist()
+print(obj1.search(40))
+#obj1.delete(20)
+#obj1.print_linkedlist()
+
+obj1.head_node=reverse_linked_list(obj1.get_head_node())
+
+print("Reversed list:")
+obj1.print_linkedlist()
 
 
